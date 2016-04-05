@@ -6,8 +6,11 @@ Some tools... Hugo, docker-compose,docker-machine, and swarm (from giantswarm.io
 
 #Use
 Either as a command:
+
     deb help
     deb docker-compose up
+
 or as an environment:
+
     deb
 
