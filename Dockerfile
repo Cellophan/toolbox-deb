@@ -13,7 +13,6 @@ RUN curl -sSL https://github.com/docker/compose/releases/download/${DOCKER_COMPO
 	curl -sSL https://github.com/docker/machine/releases/download/${DOCKER_MACHINE_VERSION}/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine &&\
 	chmod +x /usr/local/bin/docker-machine
 
-
 #X11
 #RUN apt-get update &&\
 #    apt-get install -qy x11-apps &&\
