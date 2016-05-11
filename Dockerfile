@@ -6,11 +6,15 @@ ADD material/scripts	/usr/local/bin/
 ADD material/payload	/opt/payload/
 
 #Docker-compose/-machine
-ENV DOCKER_COMPOSE_VERSION=1.6.0
+ENV DOCKER_COMPOSE_VERSION=1.7.0
 ENV DOCKER_MACHINE_VERSION=v0.6.0
-RUN curl -sSL https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose &&\
+RUN echo "Install docker-compose ${DOCKER_COMPOSE_VERSION}" &&\
+	curl -sSL https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` \
+		> /usr/local/bin/docker-compose &&\
     chmod +x /usr/local/bin/docker-compose &&\
-	curl -sSL https://github.com/docker/machine/releases/download/${DOCKER_MACHINE_VERSION}/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine &&\
+	echo "Install docker-machine ${DOCKER_MACHINE_VERSION}" &&\
+	curl -sSL https://github.com/docker/machine/releases/download/${DOCKER_MACHINE_VERSION}/docker-machine-`uname -s`-`uname -m` \
+		> /usr/local/bin/docker-machine &&\
 	chmod +x /usr/local/bin/docker-machine
 
 #X11
