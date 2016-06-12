@@ -2,9 +2,6 @@ FROM cell/debsandbox
 MAINTAINER Cell <maintainer.docker.cell@outer.systems>
 ENV	DOCKER_IMAGE="cell/toolbox-deb"
 
-ADD material/scripts	/usr/local/bin/
-ADD material/payload	/opt/payload/
-
 #Docker-compose/-machine
 ENV DOCKER_COMPOSE_VERSION=1.7.0
 ENV DOCKER_MACHINE_VERSION=v0.6.0
@@ -42,4 +39,9 @@ RUN apt-get update &&\
 #Giantswarm
 RUN curl -sSL http://downloads.giantswarm.io/swarm/clients/$(curl -sSL downloads.giantswarm.io/swarm/clients/VERSION)/swarm-$(curl -sSL downloads.giantswarm.io/swarm/clients/VERSION)-linux-amd64.tar.gz | tar xzv -C /usr/local/bin
 ADD material/swarm.json /opt/
+
+ADD material/payload	/opt/payload/
+ADD material/scripts	/usr/local/bin/
+RUN /usr/local/bin/dc install
+
 
