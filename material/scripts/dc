@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$1" == "install" ]; then
-	cmds="up down"
+	cmds="up down logs scale ps"
 	for c in $cmds; do
 		sudo ln -s /usr/local/bin/dc /usr/local/bin/${c}
 	done
@@ -26,5 +26,6 @@ if [ $0 != "dc" ]; then
 	cmd=$(basename $0)
 fi
 
-docker-compose -p ${labels/*:/} $cmd $@
+docker-compose -p ${labels/*=/} $cmd $@
+#WARNING: Found orphan containers
 
