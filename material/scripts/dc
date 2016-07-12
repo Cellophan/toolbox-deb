@@ -22,7 +22,9 @@ if [ $(echo $labels | wc -l) -ne 1 ]; then
 fi
 
 cmd=
-if [ $0 != "dc" ]; then
+if [ $0 == "dc" ]; then
+	shift
+else
 	cmd=$(basename $0)
 fi
 
