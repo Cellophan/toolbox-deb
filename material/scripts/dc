@@ -9,25 +9,25 @@ if [ "$1" == "install" ]; then
 	exit 0
 fi
 
+file=
 if [ ! -e docker-compose.yml ];  then
-	echo "docker-compose.yml not found!" >&2
-	exit 1
+	file="-f -"
 fi
 
 labels=$(cat docker-compose.yml | grep "com.docker.compose.project")
-
+project=
 if [ $(echo $labels | wc -l) -ne 1 ]; then
-	echo "Found more than one com.docker.compose.project in docker-compose.yml!" >&2
-	exit 1
+	project="-p ${labels/*=/}"
 fi
 
 cmd=
-if [ $0 == "dc" ]; then
+if [ $(basename $0) == "dc" ]; then
+	shift
+	cmd=$1
 	shift
 else
 	cmd=$(basename $0)
 fi
 
-docker-compose -p ${labels/*=/} $cmd $@
-#WARNING: Found orphan containers
+docker-compose $file $project $cmd $@
 
