@@ -3,8 +3,8 @@ MAINTAINER Cell <maintainer.docker.cell@outer.systems>
 ENV	DOCKER_IMAGE="cell/toolbox-deb"
 
 #Docker-compose/-machine
-ENV DOCKER_COMPOSE_VERSION=1.8.0-rc1
-ENV DOCKER_MACHINE_VERSION=v0.8.0-rc1
+ENV DOCKER_COMPOSE_VERSION=1.8.0-rc2
+ENV DOCKER_MACHINE_VERSION=v0.8.0-rc2
 RUN echo "Install docker-compose ${DOCKER_COMPOSE_VERSION}" &&\
 	curl -sSL https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` \
 		> /usr/local/bin/docker-compose &&\
@@ -36,9 +36,9 @@ RUN apt-get update &&\
     dpkg -i /tmp/hugo.deb &&\
     rm /tmp/hugo.deb
 
-#Giantswarm
-RUN curl -sSL http://downloads.giantswarm.io/swarm/clients/$(curl -sSL downloads.giantswarm.io/swarm/clients/VERSION)/swarm-$(curl -sSL downloads.giantswarm.io/swarm/clients/VERSION)-linux-amd64.tar.gz | tar xzv -C /usr/local/bin
-ADD material/swarm.json /opt/
+# #Giantswarm
+# RUN curl -sSL http://downloads.giantswarm.io/swarm/clients/$(curl -sSL downloads.giantswarm.io/swarm/clients/VERSION)/swarm-$(curl -sSL downloads.giantswarm.io/swarm/clients/VERSION)-linux-amd64.tar.gz | tar xzv -C /usr/local/bin
+# ADD material/swarm.json /opt/
 
 #Import scripts
 RUN git clone https://github.com/Cellophan/scripts.git /tmp/scripts &&\
