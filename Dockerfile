@@ -4,15 +4,10 @@ ENV	DOCKER_IMAGE="cell/toolbox-deb"
 
 #Docker-compose/-machine
 ENV DOCKER_COMPOSE_VERSION=1.8.0-rc2
-ENV DOCKER_MACHINE_VERSION=v0.8.0-rc2
 RUN echo "Install docker-compose ${DOCKER_COMPOSE_VERSION}" &&\
 	curl -sSL https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` \
 		> /usr/local/bin/docker-compose &&\
-    chmod +x /usr/local/bin/docker-compose &&\
-	echo "Install docker-machine ${DOCKER_MACHINE_VERSION}" &&\
-	curl -sSL https://github.com/docker/machine/releases/download/${DOCKER_MACHINE_VERSION}/docker-machine-`uname -s`-`uname -m` \
-		> /usr/local/bin/docker-machine &&\
-	chmod +x /usr/local/bin/docker-machine
+    chmod +x /usr/local/bin/docker-compose
 
 #X11
 #RUN apt-get update &&\
