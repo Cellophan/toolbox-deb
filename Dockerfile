@@ -2,7 +2,7 @@ FROM cell/debsandbox
 MAINTAINER Cell <maintainer.docker.cell@outer.systems>
 ENV	DOCKER_IMAGE="cell/toolbox-deb"
 
-#Docker-compose/-machine
+#Docker-compose
 ENV DOCKER_COMPOSE_VERSION=1.8.0-rc2
 RUN echo "Install docker-compose ${DOCKER_COMPOSE_VERSION}" &&\
 	curl -sSL https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` \
