@@ -3,7 +3,7 @@ MAINTAINER Cell <maintainer.docker.cell@outer.systems>
 ENV	DOCKER_IMAGE="cell/toolbox-deb"
 
 #Docker-compose
-ENV DOCKER_COMPOSE_VERSION=1.8.0-rc2
+ENV DOCKER_COMPOSE_VERSION=1.9.0-rc4
 RUN echo "Install docker-compose ${DOCKER_COMPOSE_VERSION}" &&\
 	curl -sSL https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` \
 		> /usr/local/bin/docker-compose &&\
