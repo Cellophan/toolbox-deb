@@ -3,12 +3,13 @@
 
 echo -n "docker run -ti --rm \
 	-h \$(basename \${0}) \
-	-w \$PWD -v \$PWD:\$PWD \
+	-w \"\$PWD\" -v \"\$PWD\":\"\$PWD\" \
 	-v /etc/localtime:/etc/localtime:ro \
 	-v \$HOME/.ssh:\$HOME/.ssh -v \$SSH_AUTH_SOCK:\$SSH_AUTH_SOCK -e SSH_AUTH_SOCK \
 	-e USER -e UID=\$(id --user) -e GID=\$(id --group) \
 	-v /var/run/docker.sock:/var/run/docker.sock \
 	-e TERM \
+	-e COMPOSE_FILE -e COMPOSE_PROJECT_NAME \
 	$@ \
 	${DOCKER_IMAGE}"
 
