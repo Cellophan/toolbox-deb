@@ -9,14 +9,6 @@ RUN echo "Install docker-compose ${DOCKER_COMPOSE_VERSION}" &&\
 		> /usr/local/bin/docker-compose &&\
     chmod +x /usr/local/bin/docker-compose
 
-#Hugo
-RUN apt-get update &&\
-    DEBIAN_FRONTEND=noninteractive apt-get install -qy wget &&\
-    apt-get clean -y && rm -rf /var/lib/apt/lists/* &&\
-    wget -O /tmp/hugo.deb --quiet https://github.com/spf13/hugo/releases/download/v0.14/hugo_0.14_amd64.deb &&\
-    dpkg -i /tmp/hugo.deb &&\
-    rm /tmp/hugo.deb
-
 #Import scripts
 RUN git clone https://github.com/Cellophan/scripts.git /tmp/scripts &&\
 	find /tmp/scripts -maxdepth 1 -type f -executable -exec cp {} /usr/local/bin/ \; &&\
